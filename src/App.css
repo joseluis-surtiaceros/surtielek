@@ -4,6 +4,134 @@ button:active { transform: scale(0.96); opacity: 0.84; }
 a:active { opacity: 0.82; }
 ::-webkit-scrollbar { width: 0; height: 0; }
 input:focus { outline: none; }
-@keyframes spin { to { transform: rotate(360deg); } }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+
+/* ── Base animations ── */
+@keyframes spin      { to { transform: rotate(360deg); } }
+@keyframes fadeIn    { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .fade { animation: fadeIn 0.2s ease; }
+
+/* ── Category card stagger entrance ── */
+@keyframes catEntrance {
+  0%   { opacity: 0; transform: translateY(18px) scale(0.94); }
+  60%  { transform: translateY(-3px) scale(1.01); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+.cat-card {
+  opacity: 0;
+  animation: catEntrance 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* ── Unique icon animations ── */
+
+/* Tubulares — rotate like a tube rolling */
+@keyframes iconTubulares {
+  0%   { transform: rotate(0deg) scale(1); }
+  40%  { transform: rotate(180deg) scale(1.2); }
+  100% { transform: rotate(360deg) scale(1); }
+}
+
+/* Ángulos — fold open like an angle bracket */
+@keyframes iconAngulos {
+  0%   { transform: rotate(-45deg) scale(0.6); opacity: 0.3; }
+  60%  { transform: rotate(5deg) scale(1.15); opacity: 1; }
+  100% { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
+/* Soleras — slide in from left like a flat bar */
+@keyframes iconSoleras {
+  0%   { transform: translateX(-14px) scaleX(0.3); opacity: 0; }
+  70%  { transform: translateX(2px) scaleX(1.05); opacity: 1; }
+  100% { transform: translateX(0) scaleX(1); opacity: 1; }
+}
+
+/* Redondo — spin like a coin */
+@keyframes iconRedondo {
+  0%   { transform: rotateY(90deg) scale(0.7); opacity: 0; }
+  50%  { transform: rotateY(-10deg) scale(1.1); opacity: 1; }
+  100% { transform: rotateY(0deg) scale(1); opacity: 1; }
+}
+
+/* Vigas — drop down like a beam falling into place */
+@keyframes iconVigas {
+  0%   { transform: translateY(-16px) scaleY(0.4); opacity: 0; }
+  65%  { transform: translateY(3px) scaleY(1.05); opacity: 1; }
+  100% { transform: translateY(0) scaleY(1); opacity: 1; }
+}
+
+/* Placa — scale up from tiny like a plate pressing */
+@keyframes iconPlaca {
+  0%   { transform: scale(0.1); opacity: 0; }
+  55%  { transform: scale(1.3); opacity: 1; }
+  75%  { transform: scale(0.9); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Tubo Negro — draw in with a stroke effect (scale from center) */
+@keyframes iconTuboNegro {
+  0%   { transform: scale(0.3) rotate(180deg); opacity: 0; }
+  60%  { transform: scale(1.15) rotate(-5deg); opacity: 1; }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* Tubo Mofle — pulse like exhaust */
+@keyframes iconTuboMofle {
+  0%   { transform: scale(0.5); opacity: 0; }
+  30%  { transform: scale(1.25); opacity: 1; }
+  55%  { transform: scale(0.9); }
+  75%  { transform: scale(1.08); }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Polín — tip/rotate like a C-channel being placed */
+@keyframes iconPolin {
+  0%   { transform: rotate(-90deg) translateX(-8px); opacity: 0; }
+  60%  { transform: rotate(5deg) translateX(1px); opacity: 1; }
+  100% { transform: rotate(0deg) translateX(0); opacity: 1; }
+}
+
+/* Varilla — sweep diagonally like a rod */
+@keyframes iconVarilla {
+  0%   { transform: rotate(-60deg) scale(0.5); opacity: 0; }
+  60%  { transform: rotate(5deg) scale(1.1); opacity: 1; }
+  100% { transform: rotate(0deg) scale(1); opacity: 1; }
+}
+
+/* Lámina Negra — flip in like a sheet */
+@keyframes iconLaminaNegra {
+  0%   { transform: rotateX(90deg) scale(0.8); opacity: 0; }
+  55%  { transform: rotateX(-8deg) scale(1.05); opacity: 1; }
+  100% { transform: rotateX(0deg) scale(1); opacity: 1; }
+}
+
+/* Lámina Galvanizada — shimmer slide */
+@keyframes iconLaminaGalv {
+  0%   { transform: rotateX(90deg) translateY(-4px) scale(0.8); opacity: 0; }
+  55%  { transform: rotateX(-5deg) translateY(1px) scale(1.05); opacity: 1; }
+  100% { transform: rotateX(0deg) translateY(0) scale(1); opacity: 1; }
+}
+
+/* Cuadrados Sólidos — grow from center with a thud */
+@keyframes iconCuadrados {
+  0%   { transform: scale(0.2) rotate(45deg); opacity: 0; }
+  50%  { transform: scale(1.2) rotate(-3deg); opacity: 1; }
+  70%  { transform: scale(0.95) rotate(1deg); }
+  100% { transform: scale(1) rotate(0deg); opacity: 1; }
+}
+
+/* ── Apply icon animations with a delay matching the card stagger ── */
+.cat-card .cat-icon { display: inline-block; opacity: 0; }
+
+.cat-card[data-cat="Tubulares"]          .cat-icon { animation: iconTubulares   0.6s ease forwards; }
+.cat-card[data-cat="\u00c1ngulos"]       .cat-icon { animation: iconAngulos      0.5s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.cat-card[data-cat="Soleras"]            .cat-icon { animation: iconSoleras      0.5s ease forwards; }
+.cat-card[data-cat="Redondo"]            .cat-icon { animation: iconRedondo      0.6s ease forwards; }
+.cat-card[data-cat="Vigas"]              .cat-icon { animation: iconVigas        0.5s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.cat-card[data-cat="Placa"]              .cat-icon { animation: iconPlaca        0.55s ease forwards; }
+.cat-card[data-cat="Tubo Negro"]         .cat-icon { animation: iconTuboNegro   0.6s ease forwards; }
+.cat-card[data-cat="Tubo Mofle"]         .cat-icon { animation: iconTuboMofle   0.7s ease forwards; }
+.cat-card[data-cat="Pol\u00edn"]         .cat-icon { animation: iconPolin        0.5s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+.cat-card[data-cat="Varilla"]            .cat-icon { animation: iconVarilla      0.55s ease forwards; }
+.cat-card[data-cat="L\u00e1mina Negra"]  .cat-icon { animation: iconLaminaNegra  0.6s ease forwards; }
+.cat-card[data-cat="L\u00e1mina Galvanizada"] .cat-icon { animation: iconLaminaGalv 0.6s ease forwards; }
+.cat-card[data-cat="Cuadrados S\u00f3lidos"]  .cat-icon { animation: iconCuadrados  0.6s cubic-bezier(0.34,1.56,0.64,1) forwards; }
+

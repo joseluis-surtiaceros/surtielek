@@ -207,14 +207,26 @@ function App() {
               </div>
               <div style={{ fontSize: 14, color: C.textSub, marginBottom: 20 }}>Selecciona una categoría</div>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2,1fr)', gap: 10 }}>
-                {CATS.map(c => (
-                  <button key={c} onClick={() => selectCat(c)} style={{
-                    display: 'flex', alignItems: 'center', gap: 10,
-                    padding: '14px 16px', borderRadius: 16, textAlign: 'left',
-                    border: `1.5px solid ${C.border}`, background: C.surface, cursor: 'pointer',
-                    boxShadow: `0 2px 6px ${C.shadow}`, transition: 'all 0.14s',
-                  }}>
-                    <span style={{ fontSize: 20, flexShrink: 0 }}>{CAT_ICONS[c] ?? '●'}</span>
+                {CATS.map((c, i) => (
+                  <button
+                    key={c}
+                    onClick={() => selectCat(c)}
+                    className="cat-card"
+                    data-cat={c}
+                    style={{
+                      display: 'flex', alignItems: 'center', gap: 10,
+                      padding: '14px 16px', borderRadius: 16, textAlign: 'left',
+                      border: `1.5px solid ${C.border}`, background: C.surface, cursor: 'pointer',
+                      boxShadow: `0 2px 6px ${C.shadow}`, transition: 'border-color 0.14s, box-shadow 0.14s',
+                      animationDelay: `${i * 55}ms`,
+                    }}
+                  >
+                    <span
+                      className="cat-icon"
+                      style={{ fontSize: 22, flexShrink: 0, width: 30, textAlign: 'center', animationDelay: `${i * 55 + 80}ms` }}
+                    >
+                      {CAT_ICONS[c] ?? '●'}
+                    </span>
                     <div>
                       <div style={{ fontSize: 14, fontWeight: 800, color: C.text }}>{c}</div>
                       <div style={{ fontSize: 11, color: C.textMuted, marginTop: 1 }}>
