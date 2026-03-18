@@ -765,7 +765,7 @@ export default function SurtielekLanding() {
           {[
             { label: "Teléfono", val: "661-100-8946" },
             { label: "WhatsApp", val: "661-100-8946" },
-            { label: "Correo", val: "ventas@surtielek.com" },
+            { label: "Correo", val: "contacto@surtielek.com" },
           ].map(({ label, val }) => (
             <div className="contact-item" key={label}>
               <span className="contact-label">{label}</span>
