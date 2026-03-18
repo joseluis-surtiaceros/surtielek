@@ -780,7 +780,7 @@ export default function SurtielekLanding() {
         <div className="footer-logo">
           <img src="/logo-surtielek.jpg" alt="Surtielek" style={{ height: "32px", width: "auto", objectFit: "contain", filter: "brightness(0) invert(1)" }} />
         </div>
-        <p className="footer-copy">© 2025 Surtielek. Todos los derechos reservados.</p>
+        <p className="footer-copy">© 2026 Surtielek. Todos los derechos reservados.</p>
         <p className="footer-group">Grupo <span>Surtiaceros del Pacífico S.A. de C.V.</span></p>
       </footer>
     </>
